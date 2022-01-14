@@ -16,7 +16,19 @@ struct HomeView: View {
                 Color.clear.preference(key: ScrollPreferenceKey.self, value: proxy.frame(in: .named("scroll")).minY)
             }
             .frame(height: 0)
-            FeaturedItem()
+            
+            TabView {
+                ForEach(/*@START_MENU_TOKEN@*/0 ..< 5/*@END_MENU_TOKEN@*/) { item in
+                    FeaturedItem()
+                }
+            }
+            .tabViewStyle(.page(indexDisplayMode: .never))
+            .frame(height: 430)
+            .background(
+                Image("Blob 1")
+                    .offset(x: 250, y: -100)
+            )
+            
             Color.clear.frame(height: 1000)
         }
         .coordinateSpace(name: "scroll")
